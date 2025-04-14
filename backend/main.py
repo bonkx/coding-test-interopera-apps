@@ -1,7 +1,8 @@
+import json
+
+import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
-import json
 
 app = FastAPI()
 
@@ -9,12 +10,14 @@ app = FastAPI()
 with open("dummyData.json", "r") as f:
     DUMMY_DATA = json.load(f)
 
-@app.get("/api/data")
-def get_data():
+
+@app.get("/api/sales-reps")
+def get_data_sales_reps():
     """
-    Returns dummy data (e.g., list of users).
+    Returns dummy data (e.g., list of sales-reps).
     """
     return DUMMY_DATA
+
 
 @app.post("/api/ai")
 async def ai_endpoint(request: Request):
@@ -24,7 +27,7 @@ async def ai_endpoint(request: Request):
     """
     body = await request.json()
     user_question = body.get("question", "")
-    
+
     # Placeholder logic: echo the question or generate a simple response
     # Replace with real AI logic as desired (e.g., call to an LLM).
     return {"answer": f"This is a placeholder answer to your question: {user_question}"}

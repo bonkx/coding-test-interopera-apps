@@ -7,9 +7,10 @@ export default function Home() {
   const [answer, setAnswer] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/data")
+    fetch("http://localhost:8000/api/sales-reps")
       .then((res) => res.json())
       .then((data) => {
+        console.log("Fetched data:", data);
         setUsers(data.users || []);
         setLoading(false);
       })
