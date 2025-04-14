@@ -6,6 +6,21 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# setup allowed origins for CORS
+origins = [
+    "http://localhost:3000",
+]
+
+# setup CORS middleware
+# This allows the frontend to communicate with the backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Load dummy data
 with open("dummyData.json", "r") as f:
     DUMMY_DATA = json.load(f)
