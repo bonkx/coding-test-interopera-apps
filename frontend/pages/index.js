@@ -1,22 +1,36 @@
 import { useState, useEffect } from "react";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
+import RepList from "../components/RepList";
 
 export default function Home() {
-  const [users, setUsers] = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/sales-reps")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data.salesReps || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch data:", err);
-        setLoading(false);
-      });
+    const fetchData = async () => {
+      try {
+        setLoading(true); // aktifkan loading
+
+        const res = await fetch("http://localhost:8000/api/sales-reps");
+        if (!res.ok) throw new Error("Failed to fetch data");
+
+        const json = await res.json();
+        setData(json.salesReps || []);     // simpan data ke state
+      } catch (err) {
+        setError(err.message || "Unexpected error occurred");
+      } finally {
+        setLoading(false); // loading selesai
+      }
+    };
+
+    setTimeout(() => {
+      fetchData();
+    }, 1000); // Simulate a delay for loading
+
   }, []);
 
   const handleAskQuestion = async () => {
@@ -34,41 +48,46 @@ export default function Home() {
   };
 
   return (
+
+
+
     <div style={{ padding: "2rem" }}>
       <h1>Next.js + FastAPI Sample</h1>
 
       <section style={{ marginBottom: "2rem" }}>
-        <h2>Dummy Data</h2>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {users.map((user) => (
-              <li key={user.id}>
-                {user.name} - {user.role}
-              </li>
-            ))}
-          </ul>
-        )}
+
+        <div className="min-h-screen bg-gray-100 p-8">
+          <h1 className="text-3xl font-bold mb-6">Sales Representatives</h1>
+
+          {loading ? (
+            <Loading />
+          ) : (
+            <RepList reps={data} />
+          )}
+
+        </div>
       </section>
 
       <section>
-        <h2>Ask a Question (AI Endpoint)</h2>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter your question..."
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-          />
-          <button onClick={handleAskQuestion}>Ask</button>
-        </div>
-        {answer && (
-          <div style={{ marginTop: "1rem" }}>
-            <strong>AI Response:</strong> {answer}
+        <div className="min-h-screen bg-gray-100 p-8">
+          <h2>Ask a Question (AI Endpoint)</h2>
+          <div>
+            <input
+              type="text"
+              placeholder="Enter your question..."
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)} />
+            <button onClick={handleAskQuestion}>Ask</button>
           </div>
-        )}
+          {answer && (
+            <div style={{ marginTop: "1rem" }}>
+              <strong>AI Response:</strong> {answer}
+            </div>
+          )}
+        </div>
+
       </section>
     </div>
+
   );
 }
