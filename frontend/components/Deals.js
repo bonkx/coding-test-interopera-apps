@@ -26,13 +26,13 @@ export default function Deals({ deals }) {
                         <div>
                             <span className="block">{deal.client}</span>
                             <span
-                                className={`inline-block px-2 py-1 mt-1 text-xs font-semibold rounded-full ${getStatusBadge(deal.status)}`}
+                                className={`inline-block px-2 py-1 mt-1 text-xs font-semibold rounded-sm ${getStatusBadge(deal.status)}`}
                             >
                                 {deal.status}
                             </span>
                         </div>
                         <span className="font-semibold text-green-600">
-                            Rp {deal.value.toLocaleString("id-ID")}
+                            USD {deal.value.toLocaleString("en-US")}
                         </span>
 
                     </li>
