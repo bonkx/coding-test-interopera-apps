@@ -3,6 +3,7 @@ import json
 import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
@@ -31,7 +32,11 @@ def get_data_sales_reps():
     """
     Returns dummy data (e.g., list of sales-reps).
     """
-    return DUMMY_DATA
+    try:
+        return DUMMY_DATA
+        # raise ValueError("Failed to fetch data")
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
 
 
 @app.post("/api/ai")

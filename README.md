@@ -6,9 +6,52 @@ Your task is to build a simple, full-stack application featuring:
 2. **FastAPI** as the backend API layer.
 3. **Dummy JSON Data** (provided) with sales-related information.
 
-You will parse the provided **`dummyData.json`** and render its nested structures in a user-friendly interface. Optionally, you may include a simple AI feature as a bonus.
-
 ---
+
+## Getting Started
+
+1. **Clone or Download** this repository (or fork it, as described above).
+2. **Backend Setup**  
+   - Navigate to the `backend` directory.  
+   - Create a virtual environment (optional but recommended).  
+   - Install dependencies:  
+     ```bash
+     pip install -r requirements.txt
+     ```  
+   - Run the server:  
+     ```bash
+     uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+     ```  
+   - Confirm the API works by visiting `http://localhost:8000/docs`.
+
+3. **Frontend Setup**  
+   - Navigate to the `frontend` directory.  
+   - Install dependencies:  
+     ```bash
+     npm install
+     ```  
+   - Start the development server:  
+     ```bash
+     npm run dev
+     ```  
+   - Open `http://localhost:3000` to view your Next.js app.
+
+4. **Data**  
+   - The file `dummyData.json` is located in the `backend` directory (or wherever you place it).
+   - Adjust your API endpoint and frontend calls if you use different paths or filenames.
+
+5. **AI Feature (If Implemented)**  
+   - Add a POST endpoint to handle AI requests, for example `/api/ai`.  
+   - In the frontend, create a simple form to collect user questions and display the returned answer.
+   - Feel free to use any **free or trial LLM API** mentioned above or implement a rule-based approach.
+
+6. **Tips for Completion**
+   - **Start Small**: Fetch the data, display it, then expand to more complex UI or AI functionality.
+   - **Testing**: You may add unit or integration tests if time permits.
+   - **UI Libraries**: Feel free to use any UI library or styling approach (Tailwind, CSS modules, etc.) if desired.
+   - **Extensions**: You can incorporate charts, filters, or sorting to demonstrate extra skills.
+
+---   
 
 ## Requirements
 

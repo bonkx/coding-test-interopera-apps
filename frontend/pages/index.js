@@ -10,27 +10,30 @@ export default function Home() {
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
 
+  const fetchData = async () => {
+    try {
+      setLoading(true); // aktifkan loading
+      setError(null); // reset error state
+
+      // Delay 1 detik
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const res = await fetch("http://localhost:8000/api/sales-reps");
+      const json = await res.json();
+      // console.log(json);
+      if (!res.ok) throw new Error(json['error']);
+
+      setData(json.salesReps || []);     // simpan data ke state
+    } catch (err) {
+      setError(err.message || "Unexpected error occurred");
+    } finally {
+      setLoading(false); // loading selesai
+    }
+  };
+
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true); // aktifkan loading
-
-        const res = await fetch("http://localhost:8000/api/sales-reps");
-        if (!res.ok) throw new Error("Failed to fetch data");
-
-        const json = await res.json();
-        setData(json.salesReps || []);     // simpan data ke state
-      } catch (err) {
-        setError(err.message || "Unexpected error occurred");
-      } finally {
-        setLoading(false); // loading selesai
-      }
-    };
-
-    setTimeout(() => {
-      fetchData();
-    }, 1000); // Simulate a delay for loading
-
+    fetchData();  // panggil fetchData saat komponen pertama kali dimuat
   }, []);
 
   const handleAskQuestion = async () => {
@@ -59,11 +62,7 @@ export default function Home() {
         <div className="min-h-screen bg-gray-100 p-8">
           <h1 className="text-3xl font-bold mb-6">Sales Representatives</h1>
 
-          {loading ? (
-            <Loading />
-          ) : (
-            <RepList reps={data} />
-          )}
+          {loading ? <Loading /> : error ? <ErrorMessage message={error} onRetry={fetchData} /> : <RepList reps={data} />}
 
         </div>
       </section>
