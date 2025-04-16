@@ -42,6 +42,52 @@ def get_data_sales_reps():
         return JSONResponse(status_code=500, content={"error": str(e)})
 
 
+@app.get("/api/chart/deal-value-per-rep")
+def deal_value_per_rep():
+    data = load_dummy_data()
+    SALES_REPS = data["salesReps"]
+
+    labels = []
+    values = []
+    for rep in SALES_REPS:
+        labels.append(rep["name"])
+        total = sum(deal["value"] for deal in rep["deals"])
+        values.append(total)
+
+    return {
+        "labels": labels,
+        "datasets": [{
+            "label": "Total Deal Value",
+            "data": values,
+            "backgroundColor": "#36A2EB"
+        }]
+    }
+
+
+@app.get("/api/chart/top-clients")
+def top_clients():
+    data = load_dummy_data()
+    SALES_REPS = data["salesReps"]
+
+    clients = []
+    for rep in SALES_REPS:
+        for deal in rep["deals"]:
+            if deal["status"] == "Closed Won":
+                clients.append({"client": deal["client"], "value": deal["value"]})
+
+    # Sort by value descending
+    clients = sorted(clients, key=lambda x: x["value"], reverse=True)[:5]
+
+    return {
+        "labels": [c["client"] for c in clients],
+        "datasets": [{
+            "label": "Top Clients by Deal Value",
+            "data": [c["value"] for c in clients],
+            "backgroundColor": "#FFC107"
+        }]
+    }
+
+
 @app.post("/api/ai")
 async def ai_endpoint(request: Request):
     """

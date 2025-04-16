@@ -8,6 +8,27 @@ Your task is to build a simple, full-stack application featuring:
 
 ---
 
+## Implemented Solution
+
+1. **Backend**
+   - Backend serve the data from `dummyData.json` via a REST endpoint `/api/sales-reps`
+   - Setup CORS for the frontend
+   - Unit Testing with pytest
+   - Run the pytest
+     ```bash
+     pytest --cov=main --cov-report=html
+     ```  
+
+2. **Frontend**
+   - Upgrade Next.js from 13.1.6 to 15.3.0
+   - Frontend fetch the data asynchronously and display it
+   - Add Tailwind for styling
+   - Implement Sales Representatives List with components
+   - Add search box and filters
+   - Implement Loading and Error handling in sales-reps page
+
+---
+
 ## Getting Started
 
 1. **Clone or Download** this repository (or fork it, as described above).
@@ -154,11 +175,3 @@ Using these free or trial options can help you add an AI chatbot or similar func
 
 ---
 
-## Implemented Solution
-
-1. **Backend**
-   - Unit Testing
-   - How to run pytest Backend
-     ```bash
-     pytest --cov=main --cov-report=html
-     ```  
