@@ -13,7 +13,9 @@ Your task is to build a simple, full-stack application featuring:
 1. **Backend**
    - Backend serve the data from `dummyData.json` via a REST endpoint `/api/sales-reps`
    - Setup CORS for the frontend
-   - Implemented 2 charts API
+   - Implemented 2 charts endpoint
+   - Implemented **mocked** AI logic endpoint 
+   - Add input schema with pydantic
    - Unit Testing with pytest
    - Run the pytest
      ```bash
@@ -28,6 +30,7 @@ Your task is to build a simple, full-stack application featuring:
    - Add search box and filters
    - Implemented Loading and Error handling in sales-reps page
    - Implemented Sales Dashboard with 2 Charts using chart.js and react-chartjs-2
+   - Implemented AIChat form to collect user questions and display the returned answer
 
 ---
 
@@ -94,9 +97,9 @@ Your task is to build a simple, full-stack application featuring:
    - [x] Ensure your API is well-structured and documented (e.g., make use of FastAPI’s automatic docs or docstrings).
 
 4. **Bonus: AI Feature (Optional)**
-   - [] Add an endpoint (e.g., `/api/ai`) that accepts user input (e.g., a question) and returns a generated or placeholder response.
-   - [] Integrate this into the frontend with a simple form or input field where the user can type a question and view the AI’s response.
-   - [] The AI logic can be **mocked** or **rule-based** if you do not wish to integrate an actual AI service. If you prefer, you may call any AI API you have access to (such as OpenAI, etc.).
+   - [x] Add an endpoint (e.g., `/api/ai`) that accepts user input (e.g., a question) and returns a generated or placeholder response.
+   - [x] Integrate this into the frontend with a simple form or input field where the user can type a question and view the AI’s response.
+   - [x] The AI logic can be **mocked** or **rule-based** if you do not wish to integrate an actual AI service. If you prefer, you may call any AI API you have access to (such as OpenAI, etc.).
 
 ---
 
@@ -174,6 +177,3 @@ Using these free or trial options can help you add an AI chatbot or similar func
 ---
 
 **Good luck, and have fun building your Sales Dashboard!**
-
----
-
