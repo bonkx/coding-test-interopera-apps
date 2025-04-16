@@ -3,12 +3,11 @@ import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 import RepList from "../components/RepList";
 import DashboardCharts from "../components/DashboardCharts";
+import AIChat from "../components/AIChat";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
 
   const fetchData = async () => {
@@ -37,23 +36,8 @@ export default function Home() {
     fetchData();  // panggil fetchData saat komponen pertama kali dimuat
   }, []);
 
-  const handleAskQuestion = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/api/ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question }),
-      });
-      const data = await response.json();
-      setAnswer(data.answer);
-    } catch (error) {
-      console.error("Error in AI request:", error);
-    }
-  };
 
   return (
-
-
 
     <div style={{ padding: "2rem" }}>
       <h1>Next.js + FastAPI Sample</h1>
@@ -81,19 +65,9 @@ export default function Home() {
       <section>
         <div className="min-h-screen bg-gray-100 p-8">
           <h2>Ask a Question (AI Endpoint)</h2>
-          <div>
-            <input
-              type="text"
-              placeholder="Enter your question..."
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)} />
-            <button onClick={handleAskQuestion}>Ask</button>
-          </div>
-          {answer && (
-            <div style={{ marginTop: "1rem" }}>
-              <strong>AI Response:</strong> {answer}
-            </div>
-          )}
+
+          <AIChat />
+
         </div>
 
       </section>
