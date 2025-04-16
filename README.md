@@ -56,24 +56,24 @@ Your task is to build a simple, full-stack application featuring:
 ## Requirements
 
 1. **Data Rendering (Required)**
-   - The backend should serve the data from `dummyData.json` via a REST endpoint (e.g., `/api/sales-reps`).
-   - The frontend must fetch this data asynchronously and display it in a meaningful way (e.g., a list of sales representatives, their deals, skills, etc.).
-   - Demonstrate handling of nested JSON structures. For example, you might display each sales rep’s deals, status, and client details.
+   - [x] The backend should serve the data from `dummyData.json` via a REST endpoint (e.g., `/api/sales-reps`).
+   - [x] The frontend must fetch this data asynchronously and display it in a meaningful way (e.g., a list of sales representatives, their deals, skills, etc.).
+   - [x] Demonstrate handling of nested JSON structures. For example, you might display each sales rep’s deals, status, and client details.
 
 2. **UI/UX (Required)**
-   - Use **Next.js** to implement at least one page that renders the fetched data.
-   - Provide a basic, intuitive UI for viewing the sales reps’ information (e.g., deals, clients).
-   - Show a loading state while data is being fetched, and handle potential errors gracefully.
+   - [x] Use **Next.js** to implement at least one page that renders the fetched data.
+   - [x] Provide a basic, intuitive UI for viewing the sales reps’ information (e.g., deals, clients).
+   - [x] Show a loading state while data is being fetched, and handle potential errors gracefully.
 
 3. **Backend API (Required)**
-   - Use **FastAPI** to create an endpoint that returns the JSON data.
-   - Implement CORS if needed, so the Next.js app can successfully request data from the FastAPI server.
-   - Ensure your API is well-structured and documented (e.g., make use of FastAPI’s automatic docs or docstrings).
+   - [x] Use **FastAPI** to create an endpoint that returns the JSON data.
+   - [x] Implement CORS if needed, so the Next.js app can successfully request data from the FastAPI server.
+   - [x] Ensure your API is well-structured and documented (e.g., make use of FastAPI’s automatic docs or docstrings).
 
 4. **Bonus: AI Feature (Optional)**
-   - Add an endpoint (e.g., `/api/ai`) that accepts user input (e.g., a question) and returns a generated or placeholder response.
-   - Integrate this into the frontend with a simple form or input field where the user can type a question and view the AI’s response.
-   - The AI logic can be **mocked** or **rule-based** if you do not wish to integrate an actual AI service. If you prefer, you may call any AI API you have access to (such as OpenAI, etc.).
+   - [] Add an endpoint (e.g., `/api/ai`) that accepts user input (e.g., a question) and returns a generated or placeholder response.
+   - [] Integrate this into the frontend with a simple form or input field where the user can type a question and view the AI’s response.
+   - [] The AI logic can be **mocked** or **rule-based** if you do not wish to integrate an actual AI service. If you prefer, you may call any AI API you have access to (such as OpenAI, etc.).
 
 ---
 
@@ -147,51 +147,18 @@ Using these free or trial options can help you add an AI chatbot or similar func
    - Clarity in the instructions to set up and run the project.  
    - Brief explanation of design choices and potential improvements.
 
----
-
-## Getting Started
-
-1. **Clone or Download** this repository (or fork it, as described above).
-2. **Backend Setup**  
-   - Navigate to the `backend` directory.  
-   - Create a virtual environment (optional but recommended).  
-   - Install dependencies:  
-     ```bash
-     pip install -r requirements.txt
-     ```  
-   - Run the server:  
-     ```bash
-     uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-     ```  
-   - Confirm the API works by visiting `http://localhost:8000/docs`.
-
-3. **Frontend Setup**  
-   - Navigate to the `frontend` directory.  
-   - Install dependencies:  
-     ```bash
-     npm install
-     ```  
-   - Start the development server:  
-     ```bash
-     npm run dev
-     ```  
-   - Open `http://localhost:3000` to view your Next.js app.
-
-4. **Data**  
-   - The file `dummyData.json` is located in the `backend` directory (or wherever you place it).
-   - Adjust your API endpoint and frontend calls if you use different paths or filenames.
-
-5. **AI Feature (If Implemented)**  
-   - Add a POST endpoint to handle AI requests, for example `/api/ai`.  
-   - In the frontend, create a simple form to collect user questions and display the returned answer.
-   - Feel free to use any **free or trial LLM API** mentioned above or implement a rule-based approach.
-
-6. **Tips for Completion**
-   - **Start Small**: Fetch the data, display it, then expand to more complex UI or AI functionality.
-   - **Testing**: You may add unit or integration tests if time permits.
-   - **UI Libraries**: Feel free to use any UI library or styling approach (Tailwind, CSS modules, etc.) if desired.
-   - **Extensions**: You can incorporate charts, filters, or sorting to demonstrate extra skills.
 
 ---
 
 **Good luck, and have fun building your Sales Dashboard!**
+
+---
+
+## Implemented Solution
+
+1. **Backend**
+   - Unit Testing
+   - How to run pytest Backend
+     ```bash
+     pytest --cov=main --cov-report=html
+     ```  
