@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 import RepList from "../components/RepList";
+import DashboardCharts from "../components/DashboardCharts";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -63,6 +64,16 @@ export default function Home() {
           <h1 className="text-3xl font-bold mb-6">Sales Representatives</h1>
 
           {loading ? <Loading /> : error ? <ErrorMessage message={error} onRetry={fetchData} /> : <RepList reps={data} />}
+
+        </div>
+      </section>
+
+      <section style={{ marginBottom: "2rem" }}>
+
+        <div className="bg-gray-100 p-8">
+          <h1 className="text-3xl font-bold mb-6">Sales Dashboard</h1>
+
+          <DashboardCharts />
 
         </div>
       </section>

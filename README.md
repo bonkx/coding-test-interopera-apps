@@ -13,6 +13,7 @@ Your task is to build a simple, full-stack application featuring:
 1. **Backend**
    - Backend serve the data from `dummyData.json` via a REST endpoint `/api/sales-reps`
    - Setup CORS for the frontend
+   - Implemented 2 charts API
    - Unit Testing with pytest
    - Run the pytest
      ```bash
@@ -23,9 +24,10 @@ Your task is to build a simple, full-stack application featuring:
    - Upgrade Next.js from 13.1.6 to 15.3.0
    - Frontend fetch the data asynchronously and display it
    - Add Tailwind for styling
-   - Implement Sales Representatives List with components
+   - Implemented Sales Representatives List with components
    - Add search box and filters
-   - Implement Loading and Error handling in sales-reps page
+   - Implemented Loading and Error handling in sales-reps page
+   - Implemented Sales Dashboard with 2 Charts using chart.js and react-chartjs-2
 
 ---
 
