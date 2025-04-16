@@ -22,9 +22,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load dummy data
-with open("dummyData.json", "r") as f:
-    DUMMY_DATA = json.load(f)
+
+def load_dummy_data():
+    # Load dummy data from a JSON file
+    with open("dummyData.json", "r") as f:
+        return json.load(f)
 
 
 @app.get("/api/sales-reps")
@@ -33,7 +35,8 @@ def get_data_sales_reps():
     Returns dummy data (e.g., list of sales-reps).
     """
     try:
-        return DUMMY_DATA
+        data = load_dummy_data()
+        return data
         # raise ValueError("Failed to fetch data")
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
@@ -52,5 +55,5 @@ async def ai_endpoint(request: Request):
     # Replace with real AI logic as desired (e.g., call to an LLM).
     return {"answer": f"This is a placeholder answer to your question: {user_question}"}
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
