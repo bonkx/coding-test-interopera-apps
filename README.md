@@ -36,7 +36,7 @@ Your task is to build a simple, full-stack application featuring:
 
 ## Getting Started
 
-1. **Clone or Download** this repository (or fork it, as described above).
+1. **Clone or Download** this repository.
 2. **Backend Setup**  
    - Navigate to the `backend` directory.  
    - Create a virtual environment (optional but recommended).  
@@ -66,10 +66,9 @@ Your task is to build a simple, full-stack application featuring:
    - The file `dummyData.json` is located in the `backend` directory (or wherever you place it).
    - Adjust your API endpoint and frontend calls if you use different paths or filenames.
 
-5. **AI Feature (If Implemented)**  
+5. **AI Feature (Implemented)**  
    - Add a POST endpoint to handle AI requests, for example `/api/ai`.  
    - In the frontend, create a simple form to collect user questions and display the returned answer.
-   - Feel free to use any **free or trial LLM API** mentioned above or implement a rule-based approach.
 
 6. **Tips for Completion**
    - **Start Small**: Fetch the data, display it, then expand to more complex UI or AI functionality.
